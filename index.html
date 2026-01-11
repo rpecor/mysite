@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio | software engineer</title>
+    <meta name="description" content="software engineer portfolio focused on clean, performant web solutions.">
+    <meta property="og:title" content="ryan pecor | software engineer">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22>🏒</text></svg>">
+    <style>
+        :root {
+            --bg: #F5F2ED;
+            --text: #1A1A1A;
+            --text-muted: #6A6660;
+            --accent: #43523D;
+            --border: #E2DFD8;
+            --glass-bg: rgba(245, 242, 237, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.2s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121211;
+            --text: #E8E6E1;
+            --accent: #8DA382;
+            --border: #2A2927;
+            --glass-bg: rgba(18, 18, 17, 0.8);
+        }
+
+        [data-theme="dark"] body {
+            background-image: none;
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 24px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.2s ease;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 32px;
+        }
+
+        .hero {
+            padding: 0;
+        }
+
+        .hero h1 {
+            margin-bottom: 16px;
+        }
+
+        .subheadline {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero-links {
+            margin-bottom: 16px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        #about {
+            margin-top: 16px;
+        }
+
+        #connect {
+            text-align: center;
+            padding: 20px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        #connect h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        #connect .hero-links {
+            justify-content: center;
+        }
+
+        .about-bio, .about-interests {
+            color: var(--text-muted);
+        }
+
+        .about-bio p {
+            max-width: 60ch;
+        }
+
+        .about-interests h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .interests-list {
+            list-style: none;
+        }
+
+        .interests-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .current-focus {
+            background: rgba(67, 82, 61, 0.05);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .current-focus h3 {
+            font-size: 11px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .timeline {
+            border-left: 1px dashed var(--border);
+            padding-left: 24px;
+        }
+
+        .timeline-item {
+            margin-bottom: 32px;
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-company {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .timeline-impact {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .project-item {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(128, 128, 128, 0.02);
+        }
+
+        .project-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .project-tech {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(4px);
+        }
+
+        .project-link span {
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .project-item:hover .project-link span {
+            transform: translateX(4px);
+        }
+
+        .project-item:hover .project-name {
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            nav {
+                top: 12px;
+                padding: 10px 20px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            main {
+                padding: 80px 20px 40px;
+            }
+
+            section {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="4"></circle>
+                <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>ryan pecor</h1>
+            <p class="subheadline">fella in atx</p>
+        </section>
+
+        <section id="about">
+            <h2>about</h2>
+            <div class="about-grid">
+                <div class="about-bio">
+                    <p>i'm an engineer driven by the intersection of technology and value based outcomes. as a sales engineer, i focus on making the complex rational by solving real-world problems where tools & products meet people.</p>
+                    <p style="margin-top: 16px;">i've become a realist about the AI shift. it feels inevitable that the world will change, the only way to drive change for good is to be sharp using and building it.</p>
+                    <div style="margin-top: 24px;">
+                        <strong style="color: var(--text); display: block; margin-bottom: 6px;">life</strong>
+                        <p>usually playing hockey, walking my dogs, or looking for an excuse to get outdoors—whether that's a road trip to big bend or just hanging out in my backyard.</p>
+                    </div>
+                </div>
+                <div class="about-interests">
+                    <div class="current-focus" style="margin-bottom: 32px;">
+                        <h3 style="margin-bottom: 8px;">currently</h3>
+                        <p style="font-size: 14px; color: var(--text-muted);">reading about the edmund fitzgerald & tinkering w/ agentic coding.</p>
+                    </div>
+                    <h3>personal interests</h3>
+                    <ul class="interests-list">
+                        <li>ice hockey</li>
+                        <li>dog walking & trails</li>
+                        <li>road trips</li>
+                        <li>exploring texas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>roles</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 – Present</div>
+                    <div class="timeline-title">Sales Engineer</div>
+                    <div class="timeline-company">Astronomer</div>
+                    <div class="timeline-impact">Helping sellers sell and customers build reliable and scalable data products.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 – 2025</div>
+                    <div class="timeline-title">Solution Engineer</div>
+                    <div class="timeline-company">Sonar</div>
+                    <div class="timeline-impact">Worked alongside Sonar sellers converting new business and helping customers maximize their usage of Sonar products.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 – 2023</div>
+                    <div class="timeline-title">Senior Software Engineer Consultant</div>
+                    <div class="timeline-company">Insight & 10th Magnitude</div>
+                    <div class="timeline-impact">Lead projects, teams and implementation of scalable software and data solutions in the cloud.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>edu</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2017</div>
+                    <div class="timeline-title">b.s. information technology & mba</div>
+                    <div class="timeline-company">cincinnati</div>
+                    <div class="timeline-impact">completed dual-degree program to bridge the gap between product operations and business operations.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>things im building</h2>
+            <div class="project-item">
+                <div class="project-name">seltzer stack</div>
+                <div class="project-tech">django / python</div>
+                <div class="project-desc">a discovery and ranking platform for the seltzer market. focused on structured data to solve choice paralysis in a rapidly expanding niche.</div>
+                <a href="#" class="project-link">coming soon <span style="font-size: 12px;">→</span></a>
+            </div>
+            <div class="project-item">
+                <div class="project-name">nhl shot predict</div>
+                <div class="project-tech">javascript / postgres</div>
+                <div class="project-desc">a predictive engine for nhl player shot metrics. built as a technical sandbox to test model tuning and the impact of environmental variables on sports outcomes.</div>
+                <a href="https://nhl-projections.vercel.app/" class="project-link">check it out <span style="font-size: 12px;">→</span></a>
+            </div>
+        </section>
+    </main>
+
+    <section id="connect">
+        <h2>let's connect</h2>
+        <div class="hero-links">
+            <a href="https://github.com/rpecor" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ryanpecor/" target="_blank">LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026. lean site built w/ pure html, css, and javascript.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+
+        const sunIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"></circle><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41"></path></svg>`;
+        const moonIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12.5A5.5 5.5 0 0 1 12.5 18c-1.86 0-3.5-1.01-4.5-2.55.75.2 1.55.3 2.5.3 3.25 0 6-2.75 6-6 0-.95-.1-1.75-.3-2.5A5.5 5.5 0 0 1 17 12.5z"></path></svg>`;
+
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'dark' ? moonIcon : sunIcon;
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = moonIcon;
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? moonIcon : sunIcon;
+        });
+    </script>
+</body>
+</html>
