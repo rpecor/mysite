@@ -100,7 +100,7 @@
         }
 
         section {
-            margin-bottom: 80px;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -119,6 +119,15 @@
 
         .hero {
             padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 200px;
+        }
+
+        .hero-image {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
         }
 
         .hero h1 {
@@ -339,6 +348,15 @@
                 gap: 24px;
             }
 
+            .hero {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+
             main {
                 padding: 80px 20px 40px;
             }
@@ -364,8 +382,11 @@
 
     <main>
         <section class="hero">
-            <h1>ryan pecor</h1>
-            <p class="subheadline">just a guy in atx</p>
+            <div>
+                <h1>ryan pecor</h1>
+                <p class="subheadline">just a guy in atx</p>
+            </div>
+            <img src="IMG_6735.jpeg" alt="Hero image" class="hero-image">
         </section>
 
         <section id="about">
