@@ -325,6 +325,33 @@
             font-size: 13px;
         }
 
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 12px 16px;
+            z-index: 1001;
+            cursor: pointer;
+            transition: width 0.2s ease;
+            width: 60px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #cookie-banner:hover {
+            width: 420px;
+        }
+
+        #cookie-banner p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 36px;
@@ -394,7 +421,7 @@
             <div class="about-grid">
                 <div class="about-bio">
                     <p>i'm an engineer driven by understanding how things work. as a sales engineer, i focus on making the complex rational by solving real-world problems where tools & products meet people.</p>
-                    <p style="margin-top: 16px;">i've become a realist about the AI shift. major change feels inevitable, the only way to drive change for good is adapt and grow quicker than ever.</p>
+                    <p style="margin-top: 16px;">i've become a realist about the AI shift. major change feels inevitable, the only way to drive change for good is to adapt and grow quicker than ever.</p>
                     <div style="margin-top: 24px;">
                         <strong style="color: var(--text); display: block; margin-bottom: 6px;">life</strong>
                         <p>usually playing hockey, walking my dogs, or looking for an excuse to get outdoors. i can't say no to a good brewery or coffee shop hang.</p>
@@ -489,6 +516,10 @@
         <p>© 2026. lean site built w/ pure html, css, and javascript.</p>
     </footer>
 
+    <div id="cookie-banner">
+        <p>...</p>
+    </div>
+
     <script>
         const themeToggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('theme');
@@ -507,11 +538,39 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
+
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             themeToggle.innerHTML = newTheme === 'dark' ? moonIcon : sunIcon;
         });
+
+        const cookieBanner = document.getElementById('cookie-banner');
+        const bannerP = cookieBanner.querySelector('p');
+
+        cookieBanner.addEventListener('mouseenter', () => {
+            bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
+        });
+
+        cookieBanner.addEventListener('mouseleave', () => {
+            bannerP.textContent = '...';
+        });
+
+        cookieBanner.addEventListener('click', () => {
+            cookieBanner.style.display = 'none';
+            localStorage.setItem('bannerDismissed', 'true');
+        });
+
+        // Auto pop on mobile
+        if (window.innerWidth <= 768 && !localStorage.getItem('bannerDismissed')) {
+            setTimeout(() => {
+                bannerP.textContent = 'thanks for stopping by, you arent being tracked! say hi if you want to connect';
+                cookieBanner.style.width = '420px';
+                setTimeout(() => {
+                    bannerP.textContent = '...';
+                    cookieBanner.style.width = '60px';
+                }, 5000);
+            }, 1000);
+        }
     </script>
 </body>
 </html>
