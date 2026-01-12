@@ -547,6 +547,10 @@
         const cookieBanner = document.getElementById('cookie-banner');
         const bannerP = cookieBanner.querySelector('p');
 
+        if (localStorage.getItem('bannerDismissed') && window.innerWidth > 768) {
+            cookieBanner.style.display = 'none';
+        }
+
         cookieBanner.addEventListener('mouseenter', () => {
             bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
         });
@@ -555,23 +559,24 @@
             bannerP.textContent = '...';
         });
 
-        cookieBanner.addEventListener('click', () => {
-            cookieBanner.style.display = 'none';
-            localStorage.setItem('bannerDismissed', 'true');
-        });
+        let expanded = false;
 
-        // Auto pop on mobile
-        if (window.innerWidth <= 768 && !localStorage.getItem('bannerDismissed')) {
-            setTimeout(() => {
-                bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
-                cookieBanner.style.width = '420px';
-                setTimeout(() => {
+        cookieBanner.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                if (!expanded) {
+                    bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
+                    cookieBanner.style.width = '420px';
+                    expanded = true;
+                } else {
                     bannerP.textContent = '...';
                     cookieBanner.style.width = '60px';
-                    localStorage.setItem('bannerDismissed', 'true');
-                }, 5000);
-            }, 1000);
-        }
+                    expanded = false;
+                }
+            } else {
+                cookieBanner.style.display = 'none';
+                localStorage.setItem('bannerDismissed', 'true');
+            }
+        });
     </script>
 </body>
 </html>
