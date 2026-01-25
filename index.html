@@ -574,16 +574,19 @@
 
         const cookieBanner = document.getElementById('cookie-banner');
         const bannerP = cookieBanner.querySelector('p');
+        let expanded = false;
 
         cookieBanner.addEventListener('mouseenter', () => {
-            bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
+            if (window.innerWidth > 768) {
+                bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
+            }
         });
 
         cookieBanner.addEventListener('mouseleave', () => {
-            bannerP.textContent = '...';
+            if (window.innerWidth > 768) {
+                bannerP.textContent = '...';
+            }
         });
-
-        let expanded = false;
 
         cookieBanner.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
