@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ryan pecor</title>
-    <meta name="description" content="engineer portfolio focused on clean, performant web & data solutions.">
-    <meta property="og:title" content="ryan pecor">
+    <title>Ryan Pecor</title>
+    <meta name="description" content="Ryan Pecor - life and work">
+    <meta property="og:description" content="Ryan Pecor - life and work">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Ryan Pecor">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22>🏒</text></svg>">
     <style>
@@ -30,10 +34,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+            font-size: 18px;
             background: var(--bg);
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 32px 32px;
             color: var(--text);
             line-height: 1.6;
             transition: all 0.3s ease;
@@ -45,10 +48,6 @@
             --accent: #8DA382;
             --border: #2A2927;
             --glass-bg: rgba(18, 18, 17, 0.8);
-        }
-
-        [data-theme="dark"] body {
-            background-image: none;
         }
 
         nav {
@@ -104,16 +103,16 @@
         }
 
         h1 {
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+            font-size: 52px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
             margin-bottom: 8px;
         }
 
         h2 {
             font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+            font-weight: 500;
+            letter-spacing: -0.01em;
             margin-bottom: 32px;
         }
 
@@ -121,7 +120,8 @@
             padding: 0;
             display: flex;
             align-items: flex-start;
-            gap: 200px;
+            justify-content: space-between;
+            gap: 40px;
         }
 
         .hero-image {
@@ -210,19 +210,6 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .current-focus {
-            background: rgba(67, 82, 61, 0.05);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-
-        .current-focus h3 {
-            font-size: 11px !important;
-            margin-bottom: 4px !important;
-        }
-
         .timeline {
             border-left: 1px dashed var(--border);
             padding-left: 24px;
@@ -288,6 +275,17 @@
             margin-bottom: 12px;
         }
 
+        .project-stats {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .project-stats strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
         .project-link {
             display: inline-flex;
             align-items: center;
@@ -323,38 +321,6 @@
             font-size: 13px;
         }
 
-        #cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            z-index: 1001;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #cookie-banner:hover {
-            width: 420px;
-            border-radius: 24px;
-            padding: 0 20px;
-            justify-content: flex-end;
-        }
-
-        #cookie-banner p {
-            margin: 0;
-            font-size: 14px;
-            color: var(--text);
-        }
 
         @media (max-width: 768px) {
             h1 {
@@ -390,26 +356,6 @@
                 max-width: 100%;
             }
 
-            #cookie-banner {
-                max-width: calc(100vw - 40px);
-                width: 48px;
-                height: 48px;
-            }
-
-            #cookie-banner:hover {
-                width: 48px;
-                height: 48px;
-                border-radius: 50%;
-                padding: 0;
-                justify-content: center;
-            }
-
-            #cookie-banner.expanded {
-                width: calc(100vw - 40px);
-                height: auto;
-                border-radius: 24px;
-                padding: 12px 20px;
-            }
 
             main {
                 padding: 80px 20px 40px;
@@ -437,8 +383,8 @@
     <main>
         <section class="hero">
             <div>
-                <h1>ryan pecor</h1>
-                <p class="subheadline">austin, texas</p>
+                <h1>Ryan Pecor</h1>
+                <p class="subheadline">Austin, Texas</p>
             </div>
             <img src="IMG_6735.jpeg" alt="Hero image" class="hero-image">
         </section>
@@ -447,25 +393,19 @@
             <h2>about</h2>
             <div class="about-grid">
                 <div class="about-bio">
-                    <p>i'm an engineer driven by understanding how things work. as a sales engineer, i focus on making the complex rational by solving real-world problems where tools & products meet people.</p>
-                    <p style="margin-top: 16px;">i've become a realist about the ai shift. change feels inevitable, the only way to drive change for good is to adapt and grow quicker than ever.</p>
-                    <p style="margin-top: 16px; font-style: italic; color: var(--text-muted);">"if you ain't runnin with it, run from it" - lil wayne</p>
+                    <p>I'm an engineer driven by understanding how things work. As a sales engineer, I focus on making the complex rational by solving real-world problems where tools & products meet people.</p>
                     <div style="margin-top: 24px;">
                         <strong style="color: var(--text); display: block; margin-bottom: 6px;">life</strong>
-                        <p>usually playing hockey, walking my dogs, or looking for an excuse to get outdoors. i can't say no to a good brewery or coffee shop hang.</p>
+                        <p>Usually playing hockey, walking my dogs, or looking for an excuse to get outdoors. I can't say no to a good brewery or coffee shop hang.</p>
                     </div>
                 </div>
                 <div class="about-interests">
-                    <div class="current-focus" style="margin-bottom: 32px;">
-                        <h3 style="margin-bottom: 8px;">currently</h3>
-                        <p style="font-size: 14px; color: var(--text-muted);">reading about the edmund fitzgerald & finding swimming holes</p>
-                    </div>
                     <h3>personal interests</h3>
                     <ul class="interests-list">
-                        <li>ice hockey</li>
-                        <li>dog walking & trails</li>
-                        <li>road trips</li>
-                        <li>exploring texas</li>
+                        <li>Ice hockey</li>
+                        <li>Dog walking & trails</li>
+                        <li>Road trips</li>
+                        <li>Exploring Texas</li>
                     </ul>
                 </div>
             </div>
@@ -478,19 +418,19 @@
                     <div class="timeline-date">2025 – Present</div>
                     <div class="timeline-title">Sales Engineer</div>
                     <div class="timeline-company">Astronomer</div>
-                    <div class="timeline-impact">driving revenue and helping customers build reliable and scalable data products.</div>
+                    <div class="timeline-impact">Driving revenue and helping customers build reliable and scalable data products.</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2023 – 2025</div>
                     <div class="timeline-title">Solution Engineer</div>
                     <div class="timeline-company">Sonar</div>
-                    <div class="timeline-impact">worked alongside Sonar sellers converting new business and helping customers maximize their usage of Sonar products.</div>
+                    <div class="timeline-impact">Worked alongside Sonar sellers converting new business and helping customers maximize their usage of Sonar products.</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2017 – 2023</div>
                     <div class="timeline-title">Senior Software Engineer Consultant</div>
                     <div class="timeline-company">Insight & 10th Magnitude</div>
-                    <div class="timeline-impact">lead projects, teams and implementation of scalable software and data solutions in the cloud.</div>
+                    <div class="timeline-impact">Led projects, teams and implementation of scalable software and data solutions in the cloud.</div>
                 </div>
             </div>
         </section>
@@ -501,25 +441,26 @@
                 <div class="timeline-item">
                     <div class="timeline-date">2017</div>
                     <div class="timeline-title">B.S. I.T & MBA</div>
-                    <div class="timeline-company">cincinnati</div>
-                    <div class="timeline-impact">completed dual-degree program to bridge the gap between product operations and business operations.</div>
+                    <div class="timeline-company">Cincinnati</div>
+                    <div class="timeline-impact">Completed dual-degree program to bridge the gap between product operations and business operations.</div>
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2>things im building</h2>
+            <h2>things i'm building</h2>
             <div class="project-item">
-                <div class="project-name">seltzer stack</div>
+                <div class="project-name">Seltzer Stack</div>
                 <div class="project-tech">django / python</div>
-                <div class="project-desc">a social discovery and ranking platform for the seltzer market.</div>
-                <span class="project-link" style="cursor: default;">coming soon 👀</span>
+                <div class="project-desc">A social discovery and ranking platform for the seltzer market.</div>
+                <span class="project-link" style="cursor: default;">Coming soon 👀</span>
             </div>
             <div class="project-item">
-                <div class="project-name">nhl shot predict</div>
+                <div class="project-name">NHL Shot Predict</div>
                 <div class="project-tech">javascript / postgres</div>
-                <div class="project-desc">a predictive engine for nhl player shot metrics. built as a sandbox to test the impact of various environmental variables on nhl player shot prop outcomes.</div>
-                <a href="https://nhl-projections.vercel.app/" target="_blank" class="project-link">check it out <span style="font-size: 12px;">→</span></a>
+                <div class="project-desc">A predictive engine for NHL player shot metrics. Built as a sandbox to test the impact of various environmental variables on NHL player shot total outcomes.</div>
+                <div class="project-stats" id="nhlRecord" hidden></div>
+                <a href="https://nhl-projections.vercel.app/" target="_blank" class="project-link">Check it out <span style="font-size: 12px;">→</span></a>
             </div>
         </section>
     </main>
@@ -541,12 +482,8 @@
     </section>
 
     <footer>
-        <p>© 2026</p>
+        <p>© 2026 · Thanks for stopping by, you aren't being tracked :)</p>
     </footer>
-
-    <div id="cookie-banner">
-        <p>...</p>
-    </div>
 
     <script>
         const themeToggle = document.getElementById('themeToggle');
@@ -572,35 +509,19 @@
             themeToggle.innerHTML = newTheme === 'dark' ? moonIcon : sunIcon;
         });
 
-        const cookieBanner = document.getElementById('cookie-banner');
-        const bannerP = cookieBanner.querySelector('p');
-        let expanded = false;
-
-        cookieBanner.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
-                bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
-            }
-        });
-
-        cookieBanner.addEventListener('mouseleave', () => {
-            if (window.innerWidth > 768) {
-                bannerP.textContent = '...';
-            }
-        });
-
-        cookieBanner.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                if (!expanded) {
-                    bannerP.textContent = 'thanks for stopping by, you aren\'t being tracked :)';
-                    cookieBanner.classList.add('expanded');
-                    expanded = true;
-                } else {
-                    bannerP.textContent = '...';
-                    cookieBanner.classList.remove('expanded');
-                    expanded = false;
-                }
-            }
-        });
+        fetch('https://nhl-projections.vercel.app/api/record')
+            .then((res) => res.ok ? res.json() : null)
+            .then((data) => {
+                if (!data || data.status !== 'ready') return;
+                const { wins, losses } = data.season;
+                if (wins + losses === 0) return;
+                const pct = Math.round((wins / (wins + losses)) * 100);
+                const week = data.lastWeek;
+                const el = document.getElementById('nhlRecord');
+                el.innerHTML = `This season: <strong>${wins}–${losses}</strong> (${pct}% of picks hit) · last 7 days: <strong>${week.wins}–${week.losses}</strong>`;
+                el.hidden = false;
+            })
+            .catch(() => {});
     </script>
 </body>
 </html>
